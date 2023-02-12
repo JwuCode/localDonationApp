@@ -11,13 +11,13 @@ import { CartProvider } from './components/cartContext.js';
 import Header from './components/header'
 import profile from './assets/naveen-kumar-QGkGM70eMBw-unsplash-modified.png'
 import bottomBar from './assets/bottomBar.png'
-import scrollbar from './assets/scrollBar.png'
 import {ShoesList} from './components/shoes'
 import {Chat} from './components/chat.js'
 import contact from './assets/contact.png'
 const Stack = createNativeStackNavigator();
 function App() {
   const [text, onChangeText] = useState('')
+  const [isDmingTrue, setDmingtrue] = useState('')
   return (
     <CartProvider >
       <NavigationContainer>
@@ -78,8 +78,7 @@ function App() {
             }} value={text} placeholder="search for items in New Delhi, India" onChangeText={onChangeText}></TextInput>
           </View>
           <View style={{flexDirection: 'row' , display: 'flex', width:"100%", height: 40}}>
-            <Image source={scrollbar} style={{marginLeft:-65, height:35, width:35}}/>
-            <TouchableOpacity style={{marginLeft:15, marginTop: 4, height:30 , width: 100, fontSize: 5, backgroundColor: '#FF6B00' , justifyContent: 'center', borderRadius: 17}}>
+            <TouchableOpacity style={{marginLeft:-7, marginTop: 4, height:30 , width: 100, fontSize: 5, backgroundColor: '#FF6B00' , justifyContent: 'center', borderRadius: 17}}>
             <Text style={{fontSize: 13, marginLeft: 7}}>Closest to you</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{marginLeft: 10, marginTop: 4,  width: 120, height: 30, fontSize: 5, backgroundColor: '#FF6B00', justifyContent: 'center', borderRadius: 17}}>
