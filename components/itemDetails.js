@@ -4,41 +4,40 @@ import {
   Image, 
   View, 
   ScrollView, 
+  TouchableOpacity,
   SafeAreaView, 
   Button, 
   StyleSheet
   } from 'react-native';
 import { getPosting } from './postingTests';
-import { CartContext } from './cartContext';
-export function ItemDetails({route}) {
+export function ItemDetails({navigation, route}) {
   const { productId } = route.params;
   const [product, setProduct] = useState({});
 
-  const { addItemToCart } = useContext(CartContext);
 
   useEffect(() => {
     setProduct(getPosting(productId));
   });
 
-  function onAddToCart() {
-    addItemToCart(product.key);
-  }
-
   return (
     <View>
       <ScrollView>
-        <Image
-          style={styles.image}
-          source={product.image}
-        />
         <View style={styles.infoContainer}>
-          <Text style={styles.name}>{product.name}</Text>
-          <Text style={styles.price}>$ {product.price}</Text>
-          <Text style={styles.description}>{product.description}</Text>
-            <Button
-            onPress={onAddToCart}
-            title="Add to cart"
-            />
+          <Image
+            style={styles.image}
+            source={product.image}
+          />
+          <View style={{marginLeft:16}}>
+            <Text style={styles.name}>{product.name}</Text>
+            <Text numberOfLines={1} style={{fontSize:20}}><Text style={{fontWeight:"bold"}}>Condition: </Text>{product.state}</Text>
+            <Text numberOfLines={1} style={{fontSize:20}}><Text style={{fontWeight:"bold"}}>Distance: </Text>{product.distance}</Text>
+            <Text numberOfLines={1} style={{fontSize:20}}><Text style={{fontWeight:"bold"}}>Size: </Text>{product.size}</Text>
+            <Text style={{fontWeight:"bold", fontSize:25, marginTop:40}}>Lakshmi Katri</Text>
+            <Text>Member since 2022</Text>
+          </View>
+        </View>
+        <View style={{display:"flex", alignItems:"center", width:"100%"}}>
+          <TouchableOpacity onPress={()=>{navigation.navigate("Chat")}} style={{backgroundColor:"#FF2E00", borderRadius:50, marginBottom:30, marginTop:30, padding:20, display:"flex", justifyContent:"center", alignItems:"center"}}><Text style={{color:"white", fontSize:35, fontWeight:"bold"}}>Contact Donator</Text></TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -59,15 +58,29 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   image: {
-    height: 300,
-    width: '100%'
+    height: 310,
+    width: '90%',
+    marginLeft:16
   },
   infoContainer: {
-    padding: 16,
+    paddingTop:50,
+    backgroundColor: 'white',
+    borderRadius: 2,
+    shadowOpacity: 0.5,
+    shadowRadius: 8,
+    height:"80%",
+    paddingBottom:30,
+    shadowColor: 'black',
+    shadowOffset: {
+      height: 0,
+      width: 0,
+    },
+    elevation: 5,
   },
   name: {
-    fontSize: 22,
+    fontSize: 35,
     fontWeight: 'bold',
+    marginBottom:15,
   },
   price: {
     fontSize: 16,
