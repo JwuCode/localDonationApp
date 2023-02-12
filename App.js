@@ -4,9 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ItemsList } from './components/itemsList.js';
 import { ItemDetails } from './components/itemDetails.js';
-import { Cart } from './components/cart.js';
-import { CartIcon } from './components/cartIcon.js';
-import { CartProvider } from './components/cartContext.js';
 const Stack = createNativeStackNavigator();
 function App() {
   return (
@@ -17,19 +14,16 @@ function App() {
           options={({ navigation }) => ({
             title: 'pepepe',
             headerTitleStyle: styles.headerTitle,
-            headerRight: () => <CartIcon navigation={navigation}/>
           })}/>
           <Stack.Screen name='ProductDetails' component={ItemDetails} 
           options={({ navigation }) => ({
             title: 'Product details',
             headerTitleStyle: styles.headerTitle,
-            headerRight: () => <CartIcon navigation={navigation}/>,
           })} />
           <Stack.Screen name='Cart' component={Cart} 
           options={({ navigation }) => ({
             title: 'My cart',
             headerTitleStyle: styles.headerTitle,
-            headerRight: () => <CartIcon navigation={navigation}/>,
           })} />
         </Stack.Navigator>
       </NavigationContainer>
