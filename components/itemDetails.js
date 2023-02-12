@@ -9,20 +9,14 @@ import {
   StyleSheet
   } from 'react-native';
 import { getPosting } from './postingTests';
-import { CartContext } from './cartContext';
 export function ItemDetails({route}) {
   const { productId } = route.params;
   const [product, setProduct] = useState({});
 
-  const { addItemToCart } = useContext(CartContext);
 
   useEffect(() => {
     setProduct(getPosting(productId));
   });
-
-  function onAddToCart() {
-    addItemToCart(product.key);
-  }
 
   return (
     <View>
@@ -34,11 +28,6 @@ export function ItemDetails({route}) {
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{product.name}</Text>
           <Text style={styles.price}>$ {product.price}</Text>
-          <Text style={styles.description}>{product.description}</Text>
-            <Button
-            onPress={onAddToCart}
-            title="Add to cart"
-            />
         </View>
       </ScrollView>
     </View>

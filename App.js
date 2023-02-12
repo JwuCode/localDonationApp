@@ -7,7 +7,6 @@ import { ItemDetails } from './components/itemDetails.js';
 const Stack = createNativeStackNavigator();
 function App() {
   return (
-    <CartProvider>
       <NavigationContainer>
         <Stack.Navigator >
           <Stack.Screen name='Products' component={ItemsList} 
@@ -20,14 +19,13 @@ function App() {
             title: 'Product details',
             headerTitleStyle: styles.headerTitle,
           })} />
-          <Stack.Screen name='Cart' component={Cart} 
+          <Stack.Screen name='Cart' component={<View></View>} 
           options={({ navigation }) => ({
             title: 'My cart',
             headerTitleStyle: styles.headerTitle,
           })} />
         </Stack.Navigator>
       </NavigationContainer>
-    </CartProvider>
   );
 }
 const styles = StyleSheet.create({
