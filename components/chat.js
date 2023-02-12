@@ -19,8 +19,9 @@ function handleSubmit() {
         
 
     }
-    if (chat === "Can I come collect it tomorrow at the townsquare 5?") {
+    if (chat === "Can I come collect it tomorrow at the townsquare at 5?") {
         setMsg3(true)
+        setText('')
         setTimeout(function(){
             setMsg4(true)
           }, 3000)
