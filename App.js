@@ -17,19 +17,12 @@ function App() {
           options={({ navigation }) => ({
             title: 'pepepe',
             headerTitleStyle: styles.headerTitle,
-            headerRight: () => <CartIcon navigation={navigation}/>
           })}/>
           <Stack.Screen name='ProductDetails' component={ItemDetails} 
           options={({ navigation }) => ({
             title: 'Product details',
             headerTitleStyle: styles.headerTitle,
-            headerRight: () => <CartIcon navigation={navigation}/>,
-          })} />
-          <Stack.Screen name='Cart' component={Cart} 
-          options={({ navigation }) => ({
-            title: 'My cart',
-            headerTitleStyle: styles.headerTitle,
-            headerRight: () => <CartIcon navigation={navigation}/>,
+
           })} />
         </Stack.Navigator>
       </NavigationContainer>
